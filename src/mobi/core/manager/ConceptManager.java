@@ -77,7 +77,12 @@ public class ConceptManager implements Serializable {
 	}
 
 	private void addConcept(GenericRelation genericRelation) {
-		String directNameRelation = this
+		
+		if (!this.allGenericRelations.containsKey(genericRelation.getUri())) {
+			this.allGenericRelations.put(genericRelation.getUri(), genericRelation);
+		} 
+		
+		/*String directNameRelation = this
 				.getDirectNameOfRelation(genericRelation);
 
 		if (!this.allGenericRelations.containsKey(directNameRelation)) {
@@ -85,7 +90,7 @@ public class ConceptManager implements Serializable {
 			genericRelation.setUri(directNameRelation);
 			this.allGenericRelations.put(genericRelation.getUri(),
 					genericRelation);
-		}
+		}*/
 	}
 
 	private void addConcept(Instance instance) {
